@@ -100,7 +100,7 @@ DRESSed-SAC, different envs:
 Should our code assist in your research, please acknowledge our work by citing:
 
 ```bib
-@article{you2024jppo,
+@article{you2025dress,
  title={DRESS: Diffusion Reasoning-based Reward Shaping Scheme For Intelligent Networks},
  author={You, Feiran and Du, Hongyang and Hou, Xiangwang and Ren, Yong and Huang, Kaibin},
  journal={arXiv preprint arXiv:2503.07433},
