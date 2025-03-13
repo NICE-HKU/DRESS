@@ -12,6 +12,31 @@ from .helpers import (
 from .utils import Progress, Silent
 from .helpers import SinusoidalPosEmb
 
+
+
+class BasicQNetwork(nn.Module):
+    def __init__(self, observation_space, action_space):
+        super().__init__()
+        self.fc1 = nn.Linear(np.array(observation_space.shape).prod() + np.prod(action_space.shape), 256)
+        self.fc2 = nn.Linear(256, 256)
+        self.fc3 = nn.Linear(256, 1)
+
+    def forward(self, x, a):
+        # Check input dimensions and reshape if needed
+        if len(x.shape) == 3:
+            x = x.reshape(x.shape[0], -1)  # Reshape from (batch, 1, 50) to (batch, 50)
+        if len(a.shape) == 3:
+            a = a.reshape(a.shape[0], -1)  # Reshape from (batch, 1, 35) to (batch, 35)
+
+        # Now concatenate along dimension 1
+        x = torch.cat([x, a], dim=1)
+
+        # Continue with the rest of your network
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+        
 class BasicActorSAC(nn.Module):
     def __init__(self, observation_space, action_space):
         super().__init__()
