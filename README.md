@@ -62,7 +62,7 @@ pip install pygame
 ## 🏃‍♀️ Run the Program
 
 ```bash
-python main.py --env_id BipedalWalker-v3
+python main.py --env-id BipedalWalker-v3
 ```
 
 ### Command Line Arguments
